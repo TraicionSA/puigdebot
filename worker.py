@@ -156,13 +156,13 @@ async def on_message(message):
      else:
       meter(url,tags)
       mes = str(messageAuthor) + ' ha introducido el gif ' + str(url) + ' con los tags ' + str(tags)
-      chann = discord.utils.get(client.get_all_channels(), name='bot_log')
+      chann = discord.utils.get(client.get_all_channels(), name='admins')
       await client.send_message(chann, str(mes))
       sleep(5)
       await client.delete_message(message)
     #ACTUALIZAR TAG GIF 
     if message.content.startswith('.updategif') or message.content.startswith('.updatetag'):
-     if(message.author.id == '125931307212603392' or message.author.id == '125931468940771328'):
+     if(message.author.id == '125931468940771328'):
          args = message.content.split(" ")
          del args[0]
          url = args[0]
@@ -176,7 +176,7 @@ async def on_message(message):
           if await client.wait_for_message(author=message.author, content=nume):
            actualizar(url,tags)
            mes = str(messageAuthor) + ' ha actualizado el gif ' + str(url) + ' con los tags ' + str(tags)
-           chann = discord.utils.get(client.get_all_channels(), name='bot_log')
+           chann = discord.utils.get(client.get_all_channels(), name='admins')
            await client.send_message(chann, str(mes))
            sleep(5)
            await client.delete_message(message)
@@ -200,7 +200,7 @@ async def on_message(message):
     
     #BORRAR GIF
     if message.content.startswith('.deletegif') or message.content.startswith('.deletetag'):
-     if(message.author.id == '125931307212603392' or message.author.id == '125931468940771328'):
+     if(message.author.id == '125931468940771328'):
          args = message.content.split(" ")
          del args[0]
          url = args[0]
@@ -213,7 +213,7 @@ async def on_message(message):
            delete(url)
            tags = sacarTag(url)
            mes = str(messageAuthor) + ' ha borrado el gif ' + str(url) + ' con los tags ' + str(tags)
-           chann = discord.utils.get(client.get_all_channels(), name='bot_log')
+           chann = discord.utils.get(client.get_all_channels(), name='admins')
            await client.send_message(chann, str(mes))
            sleep(5)
            await client.delete_message(message)
