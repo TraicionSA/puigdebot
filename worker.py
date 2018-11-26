@@ -107,7 +107,7 @@ async def on_message(message):
                 strinPosiArray = posiArray + 1
                 stri = infoUrl(buscar,posiArray) + ' \n**' + str(messageAuthor) + ' buscó: ' + infoTag(buscar,posiArray) + '** __' + str(strinPosiArray) + '/' + str(cantidad) + '__'
                 print('PROBLEMON 1')
-                await client.edit_message(msg, str(stri))
+                #await client.edit_message(msg, str(stri))
                 print('PROBLEMON 2')
                 await client.clear_reactions(msg)
                 print('PROBLEMON 3')
