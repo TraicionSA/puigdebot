@@ -230,32 +230,22 @@ async def on_message(message):
       
     #AYUDA  
     if message.content.startswith('.help'):
-     help = discord.Embed(title='AYUDA', url='http://lavozpopular.com/wp-content/uploads/2014/09/Muere-Emilio-Bot%C3%ADn.jpg', description='Botin', color=0xff0000)
-     help.set_image(url='http://lavozpopular.com/wp-content/uploads/2014/09/Muere-Emilio-Bot%C3%ADn.jpg')
-     help.add_field(name='Mostrar Gif', value='.gif tags', inline=True)
-     help.add_field(name='Ejemplo Mostrar Gif', value='.gif motos marquez', inline=True)
-     help.add_field(name='Guardar Gif', value='.creategif url tags', inline=True)
-     help.add_field(name='Ejemplo Guardar Gif', value='.creategif http://wwww.susto.com/imagen.gif susto', inline=True)
-     help.add_field(name='Editar tags de Gif', value='.updategif url tags', inline=True)
-     help.add_field(name='Ejemplo Editar tags de Gif', value='.updategif http://wwww.susto.com/imagen.gif susto discord', inline=True)
-     help.add_field(name='Comprobar si existe Gif', value='.comprobargif url', inline=True)
-     help.add_field(name='Ejemplo Comprobar Gif', value='.comprobargif http://wwww.susto.com/imagen.gif', inline=True)
-     help.add_field(name='Citar comentario', value='usar emoji 📌', inline=True)
-     #channel = message.channel
-     await messageChannel.send(embed=help)
-
+        help = discord.Embed(title='AYUDA', url='http://lavozpopular.com/wp-content/uploads/2014/09/Muere-Emilio-Bot%C3%ADn.jpg', description='Botin', color=0xff0000)
+        help.set_image(url='http://lavozpopular.com/wp-content/uploads/2014/09/Muere-Emilio-Bot%C3%ADn.jpg')
+        help.add_field(name='Mostrar Gif', value='.gif tags', inline=True)
+        help.add_field(name='Ejemplo Mostrar Gif', value='.gif motos marquez', inline=True)
+        help.add_field(name='Guardar Gif', value='.creategif url tags', inline=True)
+        help.add_field(name='Ejemplo Guardar Gif', value='.creategif http://wwww.susto.com/imagen.gif susto', inline=True)
+        help.add_field(name='Editar tags de Gif', value='.updategif url tags', inline=True)
+        help.add_field(name='Ejemplo Editar tags de Gif', value='.updategif http://wwww.susto.com/imagen.gif susto discord', inline=True)
+        help.add_field(name='Comprobar si existe Gif', value='.comprobargif url', inline=True)
+        help.add_field(name='Ejemplo Comprobar Gif', value='.comprobargif http://wwww.susto.com/imagen.gif', inline=True)
+        help.add_field(name='Citar comentario', value='usar emoji 📌', inline=True)
+        #channel = message.channel
+        await messageChannel.send(embed=help)
+   
     #STATUS BOT 
-    if message.content.startswith('.status'):
-        args = message.content.split(" ")
-        del args[0]
-        estado = ' '.join(args)
-        #await client.change_presence(game=discord.Game(name=jugando))
-        estadoTexto = discord.Activity(estado)
-        #await client.change_presence(status=discord.Status.idle, activity=game)
-        await client.change_presence(status=discord.Status.online, activity=estadoTexto)
-        
-    #GAMING BOT 
-    if message.content.startswith('.jugando_a'):
+        if message.content.startswith('.status'):
         args = message.content.split(" ")
         del args[0]
         jugando = ' '.join(args)
