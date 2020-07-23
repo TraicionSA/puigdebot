@@ -61,7 +61,7 @@ async def on_message(message):
     # messageTimestamp = message.timestamp
 
     #MOSTRAR GIF CON REACCION
-    if message.content.startswith('.gif') or message.content.startswith('.tag'):
+    if message.content.startswith('.g1f') or message.content.startswith('.t4g'):
      args = message.content.split(" ")
      del args[0]
      buscar = '%\' and tag like \'%'.join(args)
@@ -249,7 +249,9 @@ async def on_message(message):
      args = message.content.split(" ")
      del args[0]
      jugando = ' '.join(args)
-     await client.change_presence(game=discord.Game(name=jugando))  
+     #await client.change_presence(game=discord.Game(name=jugando))
+     game = discord.Game(jugando)
+     await client.change_presence(status=discord.Status.idle, activity=game)
 
      
 #SACA URL AL BUSCAR POR TAGS            
