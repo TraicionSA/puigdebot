@@ -246,12 +246,22 @@ async def on_message(message):
 
     #STATUS BOT 
     if message.content.startswith('.status'):
-     args = message.content.split(" ")
-     del args[0]
-     jugando = ' '.join(args)
-     #await client.change_presence(game=discord.Game(name=jugando))
-     game = discord.Game(jugando)
-     await client.change_presence(status=discord.Status.idle, activity=game)
+        args = message.content.split(" ")
+        del args[0]
+        estado = ' '.join(args)
+        #await client.change_presence(game=discord.Game(name=jugando))
+        estadoTexto = discord.Game(estado)
+        #await client.change_presence(status=discord.Status.idle, activity=game)
+        await client.change_presence(estadoTexto)
+        
+    #GAMING BOT 
+    if message.content.startswith('.jugando_a'):
+        args = message.content.split(" ")
+        del args[0]
+        jugando = ' '.join(args)
+        #await client.change_presence(game=discord.Game(name=jugando))
+        game = discord.Game(jugando)
+        await client.change_presence(status=discord.Status.idle, activity=game)
 
      
 #SACA URL AL BUSCAR POR TAGS            
