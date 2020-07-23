@@ -236,7 +236,8 @@ async def on_message(message):
      help.add_field(name='Ejemplo Comprobar Gif', value='.comprobargif http://wwww.susto.com/imagen.gif', inline=True)
      help.add_field(name='Citar comentario', value='usar emoji 📌', inline=True)
      channel = message.channel
-     await channel.send(message.channel, embed=help)
+     await channel.send(message, embed=help)
+     #await channel.send(message.channel, embed=help)
      # await client.send_message(message.channel, embed=help)
 
     #STATUS BOT 
