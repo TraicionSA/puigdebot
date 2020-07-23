@@ -250,9 +250,9 @@ async def on_message(message):
         del args[0]
         estado = ' '.join(args)
         #await client.change_presence(game=discord.Game(name=jugando))
-        estadoTexto = discord.Game(estado)
+        #estadoTexto = discord.Game(estado)
         #await client.change_presence(status=discord.Status.idle, activity=game)
-        await client.change_presence(estadoTexto)
+        await client.change_presence(status=discord.Status.online, estado)
         
     #GAMING BOT 
     if message.content.startswith('.jugando_a'):
