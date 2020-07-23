@@ -55,7 +55,7 @@ async def on_reaction_add(reaction, user):
 async def on_message(message):
     messageAuthor = message.author
     messageChannel = message.channel
-    messageTimestamp = message.timestamp
+    # messageTimestamp = message.timestamp
 
     #MOSTRAR GIF CON REACCION
     if message.content.startswith('.gif') or message.content.startswith('.tag'):
