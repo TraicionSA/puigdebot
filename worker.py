@@ -31,7 +31,6 @@ async def on_ready():
     print('------')
     game = discord.Game("comiendo pipas")
     await client.change_presence(status=discord.Status.idle, activity=game)
-    #await client.change_presence(game=discord.Game(name='susto.exe'))
 
 @client.event
 async def on_reaction_add(reaction, user):
@@ -48,9 +47,11 @@ async def on_reaction_add(reaction, user):
      em.set_author(name=reaction.message.author, icon_url=reaction.message.author.avatar_url)
      em.set_footer(text=str(tim))
      
-     await client.send_message(chan, embed=em)
+     #await client.send_message(chan, embed=em)
+     await messageChannel.send(chan, embed=em)
      mensa = reaction.message.author.mention
-     await client.send_message(chan, mensa)
+     #await client.send_message(chan, mensa)
+     await messageChannel.send(chan, mensa)
      
 
 @client.event
@@ -66,7 +67,8 @@ async def on_message(message):
      buscar = '%\' and tag like \'%'.join(args)
      cantidad = canti(buscar)
      if cantidad == 0:
-      await client.send_message(message.channel, ':octagonal_sign:NO ENCUENTRA EL GIF QUE BUSCAS:octagonal_sign:')
+      #await client.send_message(message.channel, ':octagonal_sign:NO ENCUENTRA EL GIF QUE BUSCAS:octagonal_sign:')
+      await messageChannel.send(':octagonal_sign:NO ENCUENTRA EL GIF QUE BUSCAS:octagonal_sign:')
      else:
       ran = randint(0,cantidad-1)
       #em = discord.Embed(title='Gif', url=infoUrl(buscar,0), description=infoTag(buscar,0), color=0xff0000)
@@ -75,7 +77,8 @@ async def on_message(message):
        posiArray = ran
        strinPosiArray = posiArray + 1
        stri =  infoUrl(buscar,posiArray) + ' \n**' + str(messageAuthor) + ' buscó: ' + infoTag(buscar,posiArray) + '** __' +str(strinPosiArray) + '/' + str(cantidad) + '__'
-       msg = await client.send_message(message.channel, str(stri))
+       #msg = await client.send_message(message.channel, str(stri))
+       msg = await messageChannel.send(str(stri))
        await client.add_reaction(msg, '👈')
        await client.add_reaction(msg, '👉')
        await client.add_reaction(msg, '🔴')
@@ -92,7 +95,8 @@ async def on_message(message):
               if reaction.count != 1 and reaction.emoji == '🗑' and messageAuthor == user:
                   return 1
               return 0
-           res = await client.wait_for_reaction(message=msg, timeout=20, check=check)
+           #res = await client.wait_for_reaction(message=msg, timeout=20, check=check)
+           res = await client.wait_for('reaction_add', message=msg, timeout=20, check=check)
            
            #REACCION SIN REACCION
            if res is None:
@@ -237,10 +241,8 @@ async def on_message(message):
      help.add_field(name='Comprobar si existe Gif', value='.comprobargif url', inline=True)
      help.add_field(name='Ejemplo Comprobar Gif', value='.comprobargif http://wwww.susto.com/imagen.gif', inline=True)
      help.add_field(name='Citar comentario', value='usar emoji 📌', inline=True)
-     channel = message.channel
-     await channel.send(embed=help)
-     #await channel.send(message.channel, embed=help)
-     # await client.send_message(message.channel, embed=help)
+     #channel = message.channel
+     await messageChannel.send(embed=help)
 
     #STATUS BOT 
     if message.content.startswith('.status'):
